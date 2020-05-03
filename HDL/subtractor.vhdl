@@ -23,7 +23,7 @@ architecture logic of subtractor is
             sum,cout: out std_logic
         );
     end component;
-    -- signal sub_op : std_logic_vector(3 downto 0);
+
     signal carry : std_logic_vector(3 downto 0);
     begin
         FAU0 : full_subtractor_unit port map(SW(7), SW(3),'1',sub_op(3),carry(0));
@@ -31,6 +31,5 @@ architecture logic of subtractor is
         FAU2 : full_subtractor_unit port map(SW(5), SW(1),carry(1),sub_op(1),carry(2));
         FAU3 : full_subtractor_unit port map(SW(4), SW(0),carry(2),sub_op(0),carry(3));
         cout <= carry(3);
-        -- SSD0 : seven_segment_decoder port map (sub_op, HEX0); --for subtraction output
-        -- SSD1 : seven_segment_decoder port map ("0000", HEX1); -- for carry output
+
     end logic;
