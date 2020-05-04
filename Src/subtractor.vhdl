@@ -11,12 +11,14 @@ end subtractor;
 
 architecture logic of subtractor is
 
+    -- Declare Components
     component seven_segment_decoder
         port(
             SW : in std_logic_vector(3 downto 0);
             HEX0 : out std_logic_vector(6 downto 0)
         );
     end component;
+
     component full_subtractor_unit
         port(
             a,b,cin : in std_logic;
@@ -24,8 +26,13 @@ architecture logic of subtractor is
         );
     end component;
 
+    -- Declare Signals
     signal carry : std_logic_vector(3 downto 0);
+
+
     begin
+
+        -- Declare Port Maps
         FAU0 : full_subtractor_unit port map(SW(7), SW(3),'1',sub_op(3),carry(0));
         FAU1 : full_subtractor_unit port map(SW(6), SW(2),carry(0),sub_op(2),carry(1));
         FAU2 : full_subtractor_unit port map(SW(5), SW(1),carry(1),sub_op(1),carry(2));

@@ -8,8 +8,8 @@ entity full_adder_unit is
     );
 end full_adder_unit;
 
-architecture logic of full_adder_unit is
+architecture behav of full_adder_unit is
     begin
         sum <= a xor b xor cin;
         cout <= (a and b) or (b and cin) or (a and cin);
-    end logic;
+    end behav;

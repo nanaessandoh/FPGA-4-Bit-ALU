@@ -8,8 +8,8 @@ entity full_subtractor_unit is
     );
 end full_subtractor_unit;
 
-architecture logic of full_subtractor_unit is
+architecture behav of full_subtractor_unit is
     begin
         sum <= a xor (not b) xor cin;
         cout <= (a and (not b)) or ((not b) and cin) or (a and cin);
-    end logic;
+    end behav;
