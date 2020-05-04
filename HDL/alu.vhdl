@@ -42,53 +42,53 @@ architecture logic of alu is
             HEX0 : out std_logic_vector(6 downto 0)
         );
     end component;
+
+    -- Declare Signals
     signal sel : std_logic_vector(1 downto 0);
     signal addition_op : std_logic_vector(3 downto 0);
     signal sub_op : std_logic_vector(3 downto 0);
     signal and_op : std_logic_vector(3 downto 0);
     signal or_op : std_logic_vector(3 downto 0);
-    signal carry_add,carry_sub : std_logic_vector(0 downto 0);
+    signal carry_add,carry_sub : std_logic;
     signal four_bit_carry : std_logic_vector(3 downto 0);
     signal op : std_logic_vector(3 downto 0);
+
 begin
     Direct0 : seven_segment_decoder port map (SW(7 downto 4), HEX5);
     Direct1 : seven_segment_decoder port map (SW(3 downto 0), HEX4);
 
 
     
-    AG : and_gate port map (SW(7 downto 0), and_op);
-    OG : or_gate port map (SW(7 downto 0), or_op);
+    and_operation : and_gate port map (SW(7 downto 0), and_op);
+    or_operation : or_gate port map (SW(7 downto 0), or_op);
     addition_operation : adder port map (SW(7 downto 0), addition_op, carry_add);
     subtraction_operation : subtractor port map (SW(7 downto 0), sub_op, carry_sub);
     
     process(SW)
         begin
+
             if (SW(9) ='0') and (SW(8) = '0') then
-                -- LEDR(0) <= '0';
-                -- AG : and_gate port map (SW(7 downto 0), HEX0);
+                -- When 00 Mode = AND
                 op <= and_op;
-                -- LEDR(0) <= '1';
             end if;
+
             if (SW(9) ='0') and (SW(8) = '1') then
-                -- LEDR(0) <= '0';
-                -- OG : or_gate port map (SW(7 downto 0), HEX0);
+                -- When 00 Mode = OR
                 op <= or_op;
-                -- LEDR(0) <= '1';
                 end if;
+
             if (SW(9) ='1') and (SW(8) = '0') then
-                -- LEDR(0) <= '0';
-                -- addition_op : adder port map (SW(7 downto 0), HEX0, HEX1);
+                -- When 00 Mode = ADD
                 op <= addition_op;
                 four_bit_carry <= "000" & carry_add;
-                -- LEDR(0) <= '1';
                 end if;
+
             if (SW(9) ='1') and (SW(8) = '1') then
-                -- LEDR(0) <= '0';
-                -- SUB_OP : subtractor port map (SW(7 downto 0), HEX0, HEX1);
+                -- When 00 Mode = SUBTRACT
                 op <= sub_op;
                 four_bit_carry <= "000" & carry_sub;
-                -- LEDR(0) <= '1';
             end if;
+
     end process;
 
     SSD0 : seven_segment_decoder port map (op, HEX0);
