@@ -19,14 +19,14 @@ A RTL Structure of the design is
 
     .
     ├── ...
-    ├── Digital_Clock.vhdl       # Top Level Entity
-    │   ├── Count2.vhdl          # HR1 - Counts from 0-2 
-    │   ├── Count3.vhdl          # HR0 - Counts from 0-9 when HR1 is 0 or 1 and 0-3 when HR is 2 
-    │   ├── Count5.vhdl          # MIN1 - Counts from 0-5 
-    │   ├── Count9.vhdl          # MIN0 - Counts from 0-9 
-    │   ├── Count5S.vhdl         # SEC1 - Counts from 0-5 
-    │   ├── Count9S.vhdl         # SEC0 - Counts from 0-9 
-    │   └── Count1S              # Generates a control signal every 1 second
+    ├── alu.vhdl                        # Top Level Entity
+    │   ├── and_gate.vhdl               # HR1 - Counts from 0-2 
+    │   ├── or_gate.vhdl                # HR0 - Counts from 0-9 when HR1 is 0 or 1 and 0-3 when HR is 2 
+    │   ├── seven_segment_decoder.vhdl  # MIN1 - Counts from 0-5 
+    │   ├── adder.vhdl                  # MIN0 - Counts from 0-9 
+    │   │     └──  adder_unit.vhdl      # SEC1 - Counts from 0-5 
+    │   ├──subtractor_unit              # Generates a control signal every 1 second
+    │        └──  adder_unit.vhdl       # SEC1 - Counts from 0-5 
     └── ...
 
 
