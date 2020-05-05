@@ -65,7 +65,7 @@ architecture behav of alu is
 begin
 
     
-    process(SW,and_op,or_op,addition_op,carry_add,sub_op,carry_sub)
+    process(SW)
         begin
 
              -- When 00 Mode = AND
