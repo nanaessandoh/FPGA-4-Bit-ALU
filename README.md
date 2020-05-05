@@ -1,7 +1,6 @@
 # FPGA implementation of a 4-Bit ALU
 
-The design is prototype on the DE1-SoC board and is driven by the 50 MHz clock signal. 
-
+The design is prototype on the DE1-SoC board. 
 
 The specifications of the design are
 * It has 2 4-bit input operands, A and B, connected to switches SW(7 downto 4) and SW(3 downto 0) respectively.
