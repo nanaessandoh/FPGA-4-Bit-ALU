@@ -14,6 +14,9 @@ The specifications of the design are
 | 10 | A + B     | addition            |
 | 11 | A - B     | subtraction         |   
 
+* It has an 4-bit output that shows the result of the selected operation on the supplied operands. The output is displayed on seven-segment display HEX0.
+* It has a 1-bit overflow output that is connected to the carry-out of the 8-bit adder when adding and subtracting and is 0 otherwise. This output is connected to HEX1.
+
 A RTL Structure of the design is
 
     .
