@@ -15,31 +15,33 @@ architecture behav of alu is
 
 
     -- Declare Components
-    component adder is
+    component adder
         port(
             SW : in std_logic_vector(7 downto 0);
-            HEX0, HEX1 : out std_logic_vector(6 downto 0)
+            adder_op : out std_logic_vector(3 downto 0);
+            cout : out std_logic
         );
     end component;
 
     component subtractor is
         port(
             SW : in std_logic_vector(7 downto 0);
-            HEX0, HEX1 : out std_logic_vector(6 downto 0)
+            sub_op : out std_logic_vector(3 downto 0);
+            cout : out std_logic
         );
     end component;
     
     component or_gate is
         port(
             SW : in std_logic_vector(7 downto 0);
-            HEX0 : out std_logic_vector(6 downto 0)
+            op : out std_logic_vector(3 downto 0)
         );
     end component;
     
     component and_gate is
         port(
             SW : in std_logic_vector(7 downto 0);
-            HEX0 : out std_logic_vector(6 downto 0)
+            op : out std_logic_vector(3 downto 0)
         );
     end component;
     
